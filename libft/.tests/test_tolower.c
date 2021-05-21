@@ -2,7 +2,7 @@
 #include <ctype.h>
 #include "../ft_tolower.c"
 
-int main (char **argv)
+int main ()
 {
 	char teste;
 	printf("*********************************\n");
