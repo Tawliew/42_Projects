@@ -1,27 +1,35 @@
-#GCC FLAGS
-CFLAGS = -Wall -Wextra -Werror
+NAME = libft.a
 CC = gcc
-TESTS = ./.tests
-AR = ar rc
+CFLAGS = -c -Wall -Werror -Wextra
+RM = rm -f
 
+SRCS =	ft_isalpha.c	\
+		ft_isdigit.c	\
+		ft_isalnum.c	\
+		ft_isascii.c	\
+		ft_isprint.c	\
+		ft_toupper.c	\
+		ft_tolower.c	\
+		ft_memset.c		\
+#.c to .o
+OBJ =		${SRCS:%.c=%.o}
 
-libft.a: ft_tolower.o ft_toupper.o
-	$(AR) libft.a ft_toupper.o ft_tolower.o
+all:		${NAME}
 
-ft_tolower.o: ft_tolower.c
-	$(CC) -c -o ft_tolower.o ft_tolower.c
+${NAME}:	${OBJ}
+			ar rcs	${NAME}		${OBJ}
 
-ft_toupper.o: ft_toupper.c
-	$(CC) -c -o ft_toupper.o ft_toupper.c
+%.o:		%.c
+			${CC}	${CFLAGS}	$< -o $@
 
-test:
-	@$(CC) $(CFLAGS) -o .tests/test_tolower.o .tests/test_tolower.c
-	@$(CC) $(CFLAGS) -o .tests/test_toupper.o .tests/test_toupper.c
-	@.tests/test_tolower.o
-	@.tests/test_toupper.o
 clean:
-	rm -f *.o
+			${RM}	${OBJ}
 
-fclean: clean
-	rm -f *.a
+fclean:		clean
+			${RM}	${NAME}
+
+re: fclean all
+
+
+.PHONY: all clean fclean re
 

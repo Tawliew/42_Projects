@@ -1,1 +1,9 @@
-# ESCREVER ALGUMA COISA SOBRE O PROJETO LIBFT
+#
+Projetos prontos:
+- toupper
+- tolower
+- isdigit
+- isalpha
+- isalnum
+- isprint
+- memset
