@@ -1,16 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
-void *ft_memset(void *s, int c, size_t n)
+void ft_bzero(void *s, size_t n)
 {
 	char *test;
 	test = s;
 	while (n > 0)
 	{
-		test[n-1] = c;
+		test[n-1] = '\0';
 		n--;
 	}
-	return (s);
 }
 
 int main()
@@ -18,8 +17,8 @@ int main()
 	char test[11] = "ronaldinho";
 	char test1[11] = "ronaldinho";
 	printf("string: %s\n", test);
-	memset(test,'!',10);
-	printf("memset: %s\n", test);
-	ft_memset(test1,'!', 10);
-	printf("ft_memset: %s\n", test1);
+	bzero(test, 2);
+	printf("bzero: %s\n", test);
+	ft_bzero(test1, 2);
+	printf("ft_bzero: %s\n", test1);
 }

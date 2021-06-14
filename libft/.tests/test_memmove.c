@@ -1,4 +1,5 @@
-#include "libft.h"
+#include <stdio.h>
+#include <string.h>
 
 void *ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -27,4 +28,13 @@ void *ft_memmove(void *dest, const void *src, size_t n)
       }
    }
    return(destiny);
+}
+
+int main () {
+   const char src[20] = "ronaldinho10";
+   //char test_pointer = src;
+   char dest[20] = "teste amigo nois";
+   printf("Before memmove dest = %s\n", dest);
+   ft_memmove(dest, src, 10);
+   printf("After memmove dest = %s\n", dest);
 }
