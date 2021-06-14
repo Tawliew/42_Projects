@@ -19,6 +19,16 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 
 int main ()
 {
+	char    *dest;
+	if (!(dest = (char *)malloc(sizeof(*dest) * 15)) || argc == 1)
+		return (0);
+	memset(dest, 0, 15);
+	memset(dest, 'r', 6);
+    ft_print_result(ft_strlcpy(dest, "lorem", 15));
+    write(1, "\n", 1);
+    write(1, dest, 15);
+
+	/*
 	size_t sizet_test;
 	size_t sizet_test1;
 	char test[11] = "ronaldinho";
@@ -30,4 +40,5 @@ int main ()
 
 	printf("return of strlcpy: %s with return size_t %ld\n", dest, sizet_test);
 	printf("return of ft_strlcpy: %s with return size_t %ld\n", dest1, sizet_test1);
+	*/
 }
