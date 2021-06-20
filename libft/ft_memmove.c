@@ -9,7 +9,8 @@ void *ft_memmove(void *dest, const void *src, size_t n)
    i = 0;
    source = src;
    destiny = dest;
-
+   if (dest == NULL && src == NULL)
+	   return(NULL);
    if (destiny > source)
    {
       while (n > 0)

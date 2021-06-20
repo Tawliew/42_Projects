@@ -6,6 +6,8 @@ void *ft_memcpy(void *dest, const void *src, size_t n)
    char *destiny;
    source = src;
    destiny = dest;
+   if (dest == NULL && src == NULL)
+	   return(0);
 
         while (n > 0)
         {
