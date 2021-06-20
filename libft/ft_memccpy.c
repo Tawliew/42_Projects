@@ -13,9 +13,9 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
         {
 		destiny[i] = source[i];
            	if (source[i] == c)
-              		return (dest);
+              		return (destiny + i + 1);
            	i++;
         }
-        return (dest);
+        return (NULL);
 }
 
