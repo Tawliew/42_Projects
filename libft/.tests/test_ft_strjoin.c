@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   test_ft_strjoin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luizfern <lfluiz.lf@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 14:43:01 by luizfern          #+#    #+#             */
-/*   Updated: 2021/06/21 15:12:27 by luizfern         ###   ########.fr       */
+/*   Updated: 2021/06/21 15:09:02 by luizfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
+#include <stdio.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*strconc;
-	int		a;
-	int		b;
-	int		c;
+	char *strconc;
+	int a;
+	int b;
+	int c;
 
 	a = 0;
 	b = 0;
@@ -39,4 +40,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	strconc[a] = '\0';
 	return (strconc);
+}
+
+int main ()
+{
+	printf("string concatenada %s", ft_strjoin("ola ", "mundo"));
 }
