@@ -28,6 +28,7 @@ SRCS =	ft_isalpha.c			\
 		ft_strnstr.c			\
 		ft_strncmp.c			\
 		ft_substr.c				\
+		ft_strjoin.c			\
 
 #.c to .o
 OBJ =		${SRCS:%.c=%.o}
