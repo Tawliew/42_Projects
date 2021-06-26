@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luizfern <lfluiz.lf@gmail.com>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/26 19:23:25 by luizfern          #+#    #+#             */
+/*   Updated: 2021/06/26 19:26:44 by luizfern         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void *ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	char *func;
+	char	*func;
+
 	func = s;
 	while (n > 0)
 	{
-		func[n-1] = c;
+		func[n - 1] = c;
 		n--;
 	}
-	return(func);
+	return (func);
 }

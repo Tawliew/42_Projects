@@ -6,13 +6,13 @@
 /*   By: luizfern <lfluiz.lf@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 18:40:57 by luizfern          #+#    #+#             */
-/*   Updated: 2021/06/20 18:42:20 by luizfern         ###   ########.fr       */
+/*   Updated: 2021/06/26 19:07:17 by luizfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *str1, const char *str2, size_t n)
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {	
 	size_t	count;
 

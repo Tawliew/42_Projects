@@ -6,7 +6,7 @@
 /*   By: luizfern <lfluiz.lf@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 18:20:46 by luizfern          #+#    #+#             */
-/*   Updated: 2021/06/20 18:39:24 by luizfern         ###   ########.fr       */
+/*   Updated: 2021/06/26 19:23:19 by luizfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ char	*ft_strrchr(const char *s, int c)
 	else
 		return (NULL);
 }
-
