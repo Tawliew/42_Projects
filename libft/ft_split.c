@@ -5,72 +5,98 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: luizfern <lfluiz.lf@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/26 17:41:03 by luizfern          #+#    #+#             */
-/*   Updated: 2021/06/26 19:14:31 by luizfern         ###   ########.fr       */
+/*   Created: 2021/06/26 21:53:55 by luizfern          #+#    #+#             */
+/*   Updated: 2021/06/26 22:18:01 by luizfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_counter_words(char *str, char c)
+static	char	**_split_words(char *str, char c)
 {
-	int	i;
-	int	j;
+	unsigned int	count_words;
+	char			**split_words;
 
-	i = 0;
-	j = 0;
-	while (str[i] && ft_strchr(str + i, c) != NULL)
+	count_words = 0;
+	while (*str)
 	{
-		if (i > 1 && str[i] == c && str[i + 1] != c)
-			j++;
-		i++;
+		if (*str != c)
+		{
+			while (*str != c && *str)
+				str++;
+			count_words++;
+		}
+		if (*str)
+			str++;
 	}
-	j += 1;
-	return (j);
+	split_words = (char **)ft_calloc(count_words + 1, sizeof(char *));
+	if (split_words == NULL)
+		return (NULL);
+	return (split_words);
 }
 
-static void	ft_build_words(int n_words, char **arr, char *str, char c)
+static	void	_free_all(char **split)	
 {
-	int	i;
+	size_t	pos;
 
-	i = 0;
-	while (i <= n_words - 1)
+	pos = 0;
+	while (split[pos])
 	{
-		if (i != n_words - 1)
-		{
-			arr[i] = ft_substr(str, 0, ft_strchr(str, c) - str);
-			str = ft_strchr(str, c);
-			while (*str == c)
-				str++;
-		}
-		else if (*str != '\0')
-			arr[i] = ft_strdup(str);
-		i++;
+		free(split[pos]);
+		pos++;
 	}
-	if (*str == '\0' && n_words == 1)
-		arr[n_words - 1] = NULL;
-	else
-		arr[n_words] = NULL;
+	free(split);
+}
+
+static	void	_char_words(char *dest, char *src, size_t len)
+{
+	while (len--)
+		*dest++ = *src++;
+}
+
+static	char	**_result_splited(char *s, char c, char **splited)
+{
+	size_t	count[2];
+
+	count[1] = 0;
+	while (*s)
+	{
+		if (*s != c)
+		{
+			count[0] = 0;
+			while (*s != c && *s)
+			{
+				s++;
+				count[0]++;
+			}
+			splited[count[1]] = (char *)ft_calloc((count[0] + 1), sizeof(char));
+			if (splited[count[1]] == NULL)
+			{
+				_free_all(splited);
+				return (NULL);
+			}
+			_char_words(splited[count[1]++], (s - count[0]), count[0]);
+		}
+		if (*s)
+			s++;
+	}
+	return (splited);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	*scpy;
-	char	*pointer_to_scpy;
-	int		n_words;
 	char	**splited;
 
 	if (!s)
 		return (NULL);
-	scpy = ft_strtrim(s, &c);
-	if (!scpy)
+	splited = _split_words((char *)s, c);
+	if (splited == NULL)
 		return (NULL);
-	pointer_to_scpy = scpy;
-	n_words = ft_counter_words(scpy, c);
-	splited = (char **)ft_calloc(sizeof(char *), (n_words + 1));
-	if (!splited)
+	splited = _result_splited((char *)s, c, splited);
+	if (splited == NULL)
+	{
+		free(splited);
 		return (NULL);
-	ft_build_words(n_words, splited, scpy, c);
-	free(pointer_to_scpy);
+	}
 	return (splited);
 }

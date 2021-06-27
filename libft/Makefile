@@ -49,10 +49,6 @@ ${NAME}:	${OBJ}
 %.o:		%.c
 			${CC}	${CFLAGS}	$< -o $@
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJ)
-
 clean:
 			${RM}	${OBJ}
 
