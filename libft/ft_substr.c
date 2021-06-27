@@ -13,24 +13,19 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	counter1;
-	size_t	counter2;
-	char	*substr;
+	size_t	number;
+	char	*sub_str;
 
-	counter1 = 0;
-	counter2 = 0;
-	substr = (char *)malloc(sizeof(*s) * (len + 1));
-	if (substr == NULL || s == NULL)
+	if (!s)
 		return (NULL);
-	while (s[counter1])
-	{
-		if (counter1 >= start && counter2 < len)
-		{
-			substr[counter2] = s[counter1];
-			counter2++;
-		}
-		counter1++;
-	}
-	substr[counter2] = '\0';
-	return (substr);
+	if ((unsigned int)ft_strlen(s) < start)
+		return (ft_calloc(sizeof(char), 1));
+	number = ft_strlen(s + start);
+	if (number < len)
+		len = number;
+	sub_str = ft_calloc(sizeof(char), (len + 1));
+	if (!sub_str)
+		return (NULL);
+	ft_strlcpy(sub_str, s + start, len + 1);
+	return (sub_str);
 }
